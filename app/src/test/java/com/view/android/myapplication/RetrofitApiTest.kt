@@ -20,7 +20,7 @@ class RetrofitApiTest {
 
     @Test
     fun retrofitGetAllProductList() = runTest {
-        val dummyResponse = ProductResponse(products = listOf())
+        val dummyResponse = ProductResponse()
         whenever(useCase.getAllProduct()).thenReturn(NetworkState.Success(dummyResponse))
 
         viewModel = MainViewModel(useCase)
