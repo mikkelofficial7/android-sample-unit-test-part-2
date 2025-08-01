@@ -7,12 +7,11 @@ import com.view.android.myapplication.component.viewmodel.MainViewModel
 import com.view.android.myapplication.core.state.NetworkState
 import kotlinx.coroutines.test.runTest
 import org.junit.Rule
-import org.koin.test.KoinTest
 import org.mockito.Mockito.mock
 import org.mockito.kotlin.whenever
 import kotlin.test.Test
 
-class RetrofitKoinTest : KoinTest {
+class RetrofitApiTest {
     @get:Rule
     val instantExecutorRule = InstantTaskExecutorRule()
 

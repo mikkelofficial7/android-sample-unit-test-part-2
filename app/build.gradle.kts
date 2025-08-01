@@ -64,8 +64,6 @@ dependencies {
     implementation(libs.glide)
     implementation(libs.koin)
     implementation(libs.koin.android)
-    implementation(libs.koin.test)
-    implementation(libs.koin.test.junit4)
     implementation(libs.fragment)
     implementation(libs.fragment.ktx)
     testImplementation(kotlin("test"))
