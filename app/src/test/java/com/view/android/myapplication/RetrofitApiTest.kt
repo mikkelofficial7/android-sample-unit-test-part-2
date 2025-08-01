@@ -2,7 +2,9 @@ package com.view.android.myapplication
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.view.android.myapplication.component.model.ProductResponse
+import com.view.android.myapplication.component.repository.ProductRepository
 import com.view.android.myapplication.component.use_case.ProductUseCase
+import com.view.android.myapplication.component.use_case.ProductUseCaseImpl
 import com.view.android.myapplication.component.viewmodel.MainViewModel
 import com.view.android.myapplication.core.state.NetworkState
 import kotlinx.coroutines.test.runTest
@@ -16,18 +18,20 @@ class RetrofitApiTest {
     @get:Rule
     val instantExecutorRule = InstantTaskExecutorRule()
 
-    private val useCase: ProductUseCase = mock()
+    private val repository: ProductRepository = mock()
+    private lateinit var useCase: ProductUseCase
     private lateinit var viewModel: MainViewModel
 
     @Before
     fun init() {
+        useCase = ProductUseCaseImpl(repository)
         viewModel = MainViewModel(useCase)
     }
 
     @Test
     fun retrofitGetAllProductList() = runTest {
         val dummyResponse = ProductResponse()
-        whenever(useCase.getAllProduct()).thenReturn(NetworkState.Success(dummyResponse))
+        whenever(repository.getAllProduct()).thenReturn(NetworkState.Success(dummyResponse))
 
         viewModel.loadAllProduct()
 
