@@ -24,7 +24,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>() {
         ItemMainAdapter()
     }
 
-    override fun layoutInflater(
+    override fun createViewBinding(
         layoutInflater: LayoutInflater,
         parent: ViewGroup?,
         attachToParent: Boolean

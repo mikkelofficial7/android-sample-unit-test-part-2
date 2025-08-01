@@ -5,5 +5,5 @@ import retrofit2.http.GET
 
 interface NetworkApi {
     @GET("products")
-    suspend fun listAllProduct():ProductResponse?
+    suspend fun listAllProduct(): ProductResponse?
 }

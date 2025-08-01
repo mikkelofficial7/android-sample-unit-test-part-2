@@ -10,14 +10,14 @@ import androidx.viewbinding.ViewBinding
 abstract class BaseFragment<VB: ViewBinding> : Fragment() {
     internal lateinit var binding: VB
 
-    abstract fun layoutInflater(layoutInflater: LayoutInflater, parent: ViewGroup?, attachToParent: Boolean): VB
+    abstract fun createViewBinding(layoutInflater: LayoutInflater, parent: ViewGroup?, attachToParent: Boolean): VB
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = layoutInflater(layoutInflater, container, false)
+        binding = createViewBinding(layoutInflater, container, false)
         return binding.root
     }
 }

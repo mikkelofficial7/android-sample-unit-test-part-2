@@ -12,7 +12,7 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>() {
         arguments?.getString("product_title") ?: ""
     }
 
-    override fun layoutInflater(
+    override fun createViewBinding(
         layoutInflater: LayoutInflater,
         parent: ViewGroup?,
         attachToParent: Boolean

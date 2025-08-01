@@ -10,7 +10,7 @@ import com.view.android.myapplication.main_page.view_holder.ItemMainViewHolder
 class ItemMainAdapter : BaseAdapter<Product, ItemViewholderMainBinding, ItemMainViewHolder>() {
     var onItemClick: (Product) -> Unit = {}
 
-    override fun inflateViewHolder(
+    override fun createViewBinding(
         layoutInflater: LayoutInflater,
         parent: ViewGroup,
         attachToParent: Boolean

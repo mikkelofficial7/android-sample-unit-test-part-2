@@ -9,14 +9,14 @@ import androidx.viewbinding.ViewBinding
 abstract class BaseAdapter<T: Any, VB : ViewBinding, VH : RecyclerView.ViewHolder>: RecyclerView.Adapter<VH>()  {
     var items: List<T> = listOf()
 
-    abstract fun inflateViewHolder(layoutInflater: LayoutInflater, parent: ViewGroup, attachToParent: Boolean): VB
+    abstract fun createViewBinding(layoutInflater: LayoutInflater, parent: ViewGroup, attachToParent: Boolean): VB
 
     abstract fun createViewHolder(binding: VB): VH
 
     abstract fun onBind(holder: VH, item: T, position: Int)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
-        val binding = inflateViewHolder(LayoutInflater.from(parent.context), parent, false)
+        val binding = createViewBinding(LayoutInflater.from(parent.context), parent, false)
         return createViewHolder(binding)
     }
 
