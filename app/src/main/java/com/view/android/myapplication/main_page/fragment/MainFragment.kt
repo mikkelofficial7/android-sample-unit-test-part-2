@@ -1,7 +1,9 @@
 package com.view.android.myapplication.main_page.fragment
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,10 +18,18 @@ import com.view.android.myapplication.detail_page.fragment.DetailFragment
 import com.view.android.myapplication.main_page.adapter.ItemMainAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::inflate) {
+class MainFragment : BaseFragment<FragmentMainBinding>() {
     private val mainViewModel: MainViewModel by viewModel()
     private val mainAdapter by lazy {
         ItemMainAdapter()
+    }
+
+    override fun layoutInflater(
+        layoutInflater: LayoutInflater,
+        parent: ViewGroup?,
+        attachToParent: Boolean
+    ): FragmentMainBinding {
+        return FragmentMainBinding.inflate(layoutInflater)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

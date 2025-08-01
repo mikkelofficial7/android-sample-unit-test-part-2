@@ -7,17 +7,17 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 
-open class BaseFragment<VB: ViewBinding>(
-    private val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> VB
-) : Fragment() {
-    lateinit var binding: VB
+abstract class BaseFragment<VB: ViewBinding> : Fragment() {
+    internal lateinit var binding: VB
+
+    abstract fun layoutInflater(layoutInflater: LayoutInflater, parent: ViewGroup?, attachToParent: Boolean): VB
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = bindingInflater(layoutInflater, container, false)
+        binding = layoutInflater(layoutInflater, container, false)
         return binding.root
     }
 }
