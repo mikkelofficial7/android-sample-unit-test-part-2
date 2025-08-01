@@ -24,10 +24,6 @@ class ItemMainAdapter : BaseAdapter<Product, ItemViewholderMainBinding, ItemMain
 
     override fun onBind(holder: ItemMainViewHolder, item: Product, position: Int) {
         holder.bind(items[position])
-        holder.view.tvTitle.setOnClickListener {
-            onItemClick(items[position])
-        }
+        holder.onItemClick = onItemClick
     }
-
-
 }
