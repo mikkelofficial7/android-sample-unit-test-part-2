@@ -2,15 +2,13 @@ package com.view.android.myapplication.main_page.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.view.android.myapplication.component.model.Product
 import com.view.android.myapplication.component.model.ProductResponse
 import com.view.android.myapplication.component.viewmodel.MainViewModel
-import com.view.android.myapplication.core.base.ext.navigateTo
+import com.view.android.myapplication.core.ext.navigateTo
 import com.view.android.myapplication.core.base.fragment.BaseFragment
 import com.view.android.myapplication.core.state.NetworkState
 import com.view.android.myapplication.databinding.FragmentMainBinding
@@ -32,10 +30,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>() {
         return FragmentMainBinding.inflate(layoutInflater)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        observeViewModel()
-
+    override fun onViewReady() {
         binding.rvList.apply {
             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
             adapter = mainAdapter
@@ -48,7 +43,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>() {
         }
     }
 
-    private fun observeViewModel() {
+    override fun observeData() {
         mainViewModel.productData.observe(viewLifecycleOwner) {
             when (it) {
                 is NetworkState.Loading -> {
@@ -63,5 +58,9 @@ class MainFragment : BaseFragment<FragmentMainBinding>() {
                 }
             }
         }
+    }
+
+    private fun observeViewModel() {
+
     }
 }

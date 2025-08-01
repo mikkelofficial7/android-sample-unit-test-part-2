@@ -3,7 +3,7 @@ package com.view.android.myapplication
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import com.view.android.myapplication.core.base.ext.loadFragment
+import com.view.android.myapplication.core.ext.loadFragment
 import com.view.android.myapplication.databinding.ActivityMainBinding
 import com.view.android.myapplication.main_page.fragment.MainFragment
 

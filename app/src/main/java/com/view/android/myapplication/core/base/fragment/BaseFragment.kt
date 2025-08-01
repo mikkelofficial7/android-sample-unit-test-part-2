@@ -12,6 +12,10 @@ abstract class BaseFragment<VB: ViewBinding> : Fragment() {
 
     abstract fun createViewBinding(layoutInflater: LayoutInflater, parent: ViewGroup?, attachToParent: Boolean): VB
 
+    abstract fun onViewReady()
+
+    abstract fun observeData()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -19,5 +23,11 @@ abstract class BaseFragment<VB: ViewBinding> : Fragment() {
     ): View {
         binding = createViewBinding(layoutInflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        observeData()
+        onViewReady()
     }
 }

@@ -1,4 +1,4 @@
-package com.view.android.myapplication.core.base.ext
+package com.view.android.myapplication.core.ext
 
 import android.app.Activity
 import android.os.Bundle
