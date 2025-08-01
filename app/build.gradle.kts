@@ -36,7 +36,7 @@ android {
     buildFeatures {
         viewBinding = true
     }
-    testOptions {
+    testOptions { // for instrumented test and android context-related test (R.string.xxx, applicationContext, etc)
         unitTests {
             isIncludeAndroidResources = true
         }
