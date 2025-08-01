@@ -15,13 +15,9 @@ import org.robolectric.annotation.Config
 class ActivityTest {
     @Test
     fun runActivity() {
-        // Given
         val activity = Robolectric.buildActivity(MainActivity::class.java).setup().get()
-
-        // When
         activity.loadFragment(MainFragment::class)
 
-        // Then
         val fragmentManager = activity.supportFragmentManager
         val fragment = fragmentManager.findFragmentByTag(MainFragment::class.java.simpleName)
 
