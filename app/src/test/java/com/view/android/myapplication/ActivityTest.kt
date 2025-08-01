@@ -1,5 +1,6 @@
 package com.view.android.myapplication
 
+import com.view.android.myapplication.core.base.ext.loadFragment
 import com.view.android.myapplication.main_page.fragment.MainFragment
 import junit.framework.TestCase.assertEquals
 import junit.framework.TestCase.assertNotNull
