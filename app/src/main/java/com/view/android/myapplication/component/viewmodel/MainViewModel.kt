@@ -12,6 +12,7 @@ class MainViewModel(
     val useCase: ProductUseCase,
 ): ViewModel() {
     internal val productData = MutableLiveData<NetworkState>()
+    internal val productDataFromDb = MutableLiveData<NetworkState>()
 
     fun loadAllProduct() {
        productData.postValue(NetworkState.Loading)
@@ -19,5 +20,13 @@ class MainViewModel(
            val productList = useCase.getAllProduct()
            productData.postValue(productList)
        }
+    }
+
+    fun loadAllProductFromDb() {
+        productDataFromDb.postValue(NetworkState.Loading)
+        viewModelScope.launch(Dispatchers.IO) {
+            val productList = useCase.getAllProductFromDb()
+            productDataFromDb.postValue(productList)
+        }
     }
 }

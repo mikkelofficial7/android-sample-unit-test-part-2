@@ -37,6 +37,8 @@ class MainFragment : BaseFragment<FragmentMainBinding>() {
         }
 
         mainViewModel.loadAllProduct()
+        mainViewModel.loadAllProductFromDb()
+
         mainAdapter.onItemClick = {
             val bundle = Bundle().apply { putString("product_title", it.title) }
             requireActivity().navigateTo(DetailFragment::class, bundle = bundle)

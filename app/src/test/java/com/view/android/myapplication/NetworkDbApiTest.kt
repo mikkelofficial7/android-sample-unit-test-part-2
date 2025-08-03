@@ -14,7 +14,7 @@ import org.mockito.Mockito.mock
 import org.mockito.kotlin.whenever
 import kotlin.test.Test
 
-class RetrofitApiTest {
+class NetworkDbApiTest {
     @get:Rule
     val instantExecutorRule = InstantTaskExecutorRule()
 
@@ -36,6 +36,18 @@ class RetrofitApiTest {
         viewModel.loadAllProduct()
 
         viewModel.productData.observeForever { state ->
+            println(state)
+        }
+    }
+
+    @Test
+    fun roomGetAllProductList() = runTest {
+        val dummyResponse = ProductResponse()
+        whenever(repository.getAllProductFromDB()).thenReturn(NetworkState.Success(dummyResponse))
+
+        viewModel.loadAllProductFromDb()
+
+        viewModel.productDataFromDb.observeForever { state ->
             println(state)
         }
     }

@@ -5,16 +5,18 @@ import com.view.android.myapplication.component.use_case.ProductUseCase
 import com.view.android.myapplication.component.use_case.ProductUseCaseImpl
 import com.view.android.myapplication.component.viewmodel.MainViewModel
 import com.view.android.myapplication.component.network.NetworkConfig
+import com.view.android.myapplication.component.room.RoomConfig
 import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
 
 val appModule = module {
     single { NetworkConfig.provideRetrofit() }
     single { NetworkConfig.provideRetrofitCreate(get()) }
+    single { RoomConfig.provideRoom(get()) }
 }
 
 val repoModule = module {
-    single<ProductRepository> { ProductRepositoryImpl(get()) }
+    single<ProductRepository> { ProductRepositoryImpl(get(), get()) }
 }
 
 val useCaseModule = module {
