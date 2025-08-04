@@ -1,6 +1,7 @@
 # Sample unit test using Retrofit, Roboelectric, and Mockito 🚀
 
-Simple version of Unit testing using Mockito, Roboelectric, and API Testing (Retrofit)
+Simple version of Unit testing using Mockito, Roboelectric, and API Testing (Retrofit). 
+I use S.O.L.I.D principle to get and load network response
 
 Test Library Gradle Version that I've used: 
 
